@@ -27,7 +27,10 @@ export class AuthService {
       .post<AuthenticationResponse>(environment.apiHost + 'users/login', login)
       .pipe(
         tap((authenticationResponse) => {
-          this.tokenStorage.saveAccessToken(authenticationResponse.accessToken, authenticationResponse.id);
+          this.tokenStorage.saveAccessToken(
+            authenticationResponse.accessToken,
+            authenticationResponse.id
+          );
           this.setUser();
         })
       );
@@ -35,13 +38,13 @@ export class AuthService {
 
   register(registration: Registration): Observable<AuthenticationResponse> {
     return this.http
-    .post<AuthenticationResponse>(environment.apiHost + 'users', registration)
-    .pipe(
-      tap((authenticationResponse) => {
-        //this.tokenStorage.saveAccessToken(authenticationResponse.accessToken, authenticationResponse.id);
-        //this.setUser();
-      })
-    );
+      .post<AuthenticationResponse>(environment.apiHost + 'users', registration)
+      .pipe(
+        tap((authenticationResponse) => {
+          //this.tokenStorage.saveAccessToken(authenticationResponse.accessToken, authenticationResponse.id);
+          //this.setUser();
+        })
+      );
   }
 
   logout(): void {
@@ -81,6 +84,9 @@ export class AuthService {
   }
 
   resetPassword(token: string, password: string): Observable<any> {
-    return this.http.post(environment.apiHost + `users/reset`, { token, password });
+    return this.http.post(environment.apiHost + `users/reset`, {
+      token,
+      password,
+    });
   }
 }

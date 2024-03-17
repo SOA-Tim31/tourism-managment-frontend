@@ -45,7 +45,7 @@ export class TourFormComponent implements OnChanges {
     description: new FormControl('', [Validators.required]),
     status: new FormControl('', [Validators.required]),
     difficulytLevel: new FormControl('', [Validators.required]),
-    price: new FormControl(0, [Validators.required] )
+    price: new FormControl(0, [Validators.required]),
   });
 
   ngOnInit(): void {}
