@@ -20,6 +20,7 @@ import { TourKeyPointEncounter } from './model/TourKeyPointEncounter.model';
 import { TourBundle } from './model/tourBundle.model';
 
 import { Equipment } from './tour/model/equipment.model';
+import { Coupon } from '../marketplace/model/coupon.model';
 
 
 @Injectable({
@@ -352,6 +353,22 @@ export class TourAuthoringService {
     return this.http.get<number[]>(
       environment.apiHost + 'administration/tourStatistics/getTourPointEncounterPercentage/'  +authorId+'/'+ tourId
     );
+  }
+
+  getCouponsByAuthor(authorId:number): Observable<Coupon[]> {
+    return this.http.get<Coupon[]>(
+      environment.apiHost + 'authoring/coupon/' + authorId
+    );
+  }
+
+  updateCoupon(coupon:Coupon): Observable<Coupon> {
+    return this.http.put<Coupon>(environment.apiHost + 'authoring/coupon/' + coupon.id,
+    coupon
+  );
+  }
+
+  deleteCoupon(couponId:number): Observable<void> {
+    return this.http.delete<void>(environment.apiHost + 'authoring/coupon/' + couponId);
   }
 
 

@@ -274,6 +274,5 @@ export class TourSearchComponent implements OnInit {
         }
       }
     });
-
   }
 }

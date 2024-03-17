@@ -24,6 +24,7 @@ export class PurchasedTourDetailsComponent implements OnInit{
       next: (result: Tour)=>{
         this.tour = result;
         console.log(this.tour.price);
+        console.log(this.tour);
       },
       error: (err: any) =>{
         console.log(err)

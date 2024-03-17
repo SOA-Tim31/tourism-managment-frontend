@@ -29,12 +29,19 @@
     font-family: "Trip", sans-serif;
   }
 
+.like-div {
+  min-height: 34px;
+  display: flex;
+}
+
   .like-button {
     width: 30px; /* Set the desired width */
     height: 30px; /* Set the desired height */
     transition: filter 0.3s; /* Add a transition for a smooth effect */
     border: transparent;
+    cursor: pointer;
     background-color: transparent;
+    margin-left: auto;
   }
 
   .like-button img {
@@ -52,7 +59,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #FFF;
+    background-color: #FAF9F6;
   }
 
 
@@ -60,7 +67,7 @@
     font-size: 42px;
     font-weight: bold;
     text-align: center;
-    margin-bottom: 56px;
+    margin-bottom: 100px;
   }
 
   .slide-container {
@@ -88,7 +95,6 @@
     border-radius: 10px;
     display: flex;
     flex-direction: column;
-    cursor: pointer;
     box-shadow: 0 2px 16px 3px #dddddd;
     transition: box-shadow 0.3s ease;
   }
@@ -217,7 +223,7 @@
 
   .desc-container {
     overflow: hidden;
-    height: 150px;
+    min-height: 80px;
   }
 
   .description {

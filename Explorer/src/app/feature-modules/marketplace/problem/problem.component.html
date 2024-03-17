@@ -5,13 +5,17 @@
                 <mat-card [ngStyle]="{
                     'background-color': p.isSolved ? 'lightgreen' : (p.isUnsolvedForMoreThan5Days ? '#e23a55' : '/assets/images/q.jpg')
                   }">
-                    <mat-card-header>
-                        <mat-card-title>Category: {{p.category}}</mat-card-title>
+                  <mat-card-header>
+                    <div style="display: flex; flex-direction: column;">
+                        <mat-card-title>{{p.category}}</mat-card-title>
+                        <mat-card-title>Deadline: {{p.deadline | date:'yyyy-MM-dd' }}</mat-card-title>
                         <mat-card-subtitle>Priority: {{p.priority}}</mat-card-subtitle>
-                    </mat-card-header>
+                        
+                    </div>
+                </mat-card-header>
+                
                     <mat-card-content>
-                        <p>Description: {{p.description}}</p>
-                        <p>Deadline: {{p.deadline | date:'yyyy-MM-dd' }}</p>
+                        <p>{{p.description}}</p>
                     </mat-card-content>
                     <mat-card-actions>
                         <button color="primary" (click)="onProblemReplay(p)" mat-icon-button [disabled]="p.isSolved || isSolving || disabledRows.includes(i)">

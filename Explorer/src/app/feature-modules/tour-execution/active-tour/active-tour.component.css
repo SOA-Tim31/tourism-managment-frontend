@@ -120,7 +120,7 @@
   margin: 20px;
   border-radius: 5px;
   box-shadow: 0 2px 16px 3px #dddddd;
-  transition: background-color 0.3s ease-in-out; /* Added transition for background color */
+  transition: background-color 0.5s ease-in-out; /* Added transition for background color */
 
 }
 
@@ -135,10 +135,20 @@
   display: flex;
   align-items: center;
   padding: 10px;
+  justify-content:space-between
 }
+
+.accordion-header-plus{
+  margin-top: 10px;
+  display: flex;
+}
+
 .accordion-header span{
-  margin-top: -10px;
   font-size: 25px;
+}
+
+.minutes-ago{
+  margin-top: 10px;
 }
 
 .accordion-title{
@@ -179,4 +189,69 @@
 .accordion-content.open {
   max-height: 300px; /* Set the max-height when open */
   opacity: 1;
+}
+
+.gg-lock-unlock {
+  box-sizing: border-box;
+  position: relative;
+  display: block;
+  transform: scale(var(--ggs,1));
+  width: 12px;
+  height: 6px;
+  border: 2px solid;
+  border-top-right-radius: 100px;
+  border-top-left-radius: 100px;
+  border-bottom: transparent;
+  margin-top: -18px;
+  margin-left: -2px
+}
+.gg-lock-unlock::after,
+.gg-lock-unlock::before {
+  content: "";
+  display: block;
+  box-sizing: border-box;
+  position: absolute
+}
+.gg-lock-unlock::after {
+  border: 2px solid transparent;
+  box-shadow: 0 0 0 2px;
+  width: 16px;
+  height: 10px;
+  border-radius: 2px;
+  left: -4px;
+  top: 10px
+}
+.gg-lock-unlock::before {
+  width: 2px;
+  height: 6px;
+  background: currentColor;
+  left: -2px;
+  top: 4px;
+}
+
+.gg-lock {
+  box-sizing: border-box;
+  position: relative;
+  display: block;
+  transform: scale(var(--ggs,1));
+  width: 12px;
+  height: 11px;
+  border: 2px solid;
+  border-top-right-radius: 50%;
+  border-top-left-radius: 50%;
+  border-bottom: transparent;
+  margin-top: -12px
+}
+.gg-lock::after {
+  content: "";
+  display: block;
+  box-sizing: border-box;
+  position: absolute;
+  width: 16px;
+  height: 10px;
+  border-radius: 2px;
+  border: 2px solid transparent;
+  box-shadow: 0 0 0 2px;
+  left: -4px;
+  top: 9px
 }

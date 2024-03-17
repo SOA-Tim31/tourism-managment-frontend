@@ -45,6 +45,7 @@ export class TourFormComponent implements OnChanges {
     description: new FormControl('', [Validators.required]),
     status: new FormControl('', [Validators.required]),
     difficulytLevel: new FormControl('', [Validators.required]),
+    price: new FormControl(0, [Validators.required]),
   });
 
   ngOnInit(): void {}
@@ -57,7 +58,7 @@ export class TourFormComponent implements OnChanges {
       status: Status.Draft,
       difficultyLevel: this.tourForm.value.difficulytLevel as DifficultyLevel,
       UserId: this.tokenStorage.getUserId(),
-      price: 0,
+      price: this.tourForm.value.price || 0,
       tags: ['xzy', 'abc'],
       tourPoints: [],
       tourCharacteristics: [],

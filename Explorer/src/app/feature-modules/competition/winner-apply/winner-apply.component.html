@@ -1,33 +1,33 @@
 <div class="body">
 
     <div class="slide-container">
-  
+
       <div class="title">WINNER</div>
-  
+
       <div class="slide-content">
         <div class="card-wrapper">
-          <button *ngFor="let apply of competitionApplies">
+          <div *ngFor="let apply of competitionApplies">
           <div class="card">
-  
+
+            <div class="card-content">
+              <h2 class="name">{{ apply.userName }} {{ apply.userLastName }}</h2>
+
+<!--              <div class="desc-container">-->
+<!--                <p class="description">{{ apply.userLastName }}</p>-->
+<!--              </div>-->
+            </div>
+
             <div class="image-content">
               <div class="card-image">
                 <img [src]="apply.imageUrl" alt="" class="card-img">
               </div>
             </div>
-  
-            <div class="card-content">
-              <h2 class="name">{{ apply.userName }}</h2>
-  
-              <div class="desc-container">
-                <p class="description">{{ apply.userLastName }}</p>
-              </div>
-            </div>
-  
+
           </div>
-          </button>
+          </div>
         </div>
-        
+
       </div>
     </div>
-  
+
   </div>

@@ -1,7 +1,10 @@
 <form [formGroup]="couponForm" (ngSubmit)="submitForm()">
-    <div class="form-row">
-      <h1>Create Author coupon</h1>
-    </div>
+
+    <div class="header-container">
+      <p class="hdr">Create Author coupon</p>
+      <!--<mat-icon class="icon" matTooltip="Author coupon applies for all author's tours. You can have only one Author coupon">help_outline</mat-icon>
+        <!-->
+      </div>
   
     <div class="form-row">
       <mat-form-field>
@@ -17,5 +20,5 @@
       </mat-form-field>
     </div>
   
-    <button mat-raised-button color="primary" type="submit">Submit</button>
+    <button mat-raised-button color="primary" type="submit">Create</button>
   </form>

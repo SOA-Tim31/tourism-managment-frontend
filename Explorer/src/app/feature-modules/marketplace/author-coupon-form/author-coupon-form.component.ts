@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MarketplaceService } from '../marketplace.service';
 import { AuthService } from 'src/app/infrastructure/auth/auth.service';
 import { Coupon } from '../model/coupon.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'xp-author-coupon-form',
@@ -15,7 +16,7 @@ export class AuthorCouponFormComponent  implements OnInit{
   authorId: number
   minDate: Date
 
-  constructor(private formBuilder: FormBuilder,private marketplaceService: MarketplaceService, private auth: AuthService){}
+  constructor(private formBuilder: FormBuilder,private marketplaceService: MarketplaceService, private auth: AuthService, private router: Router){}
 
   ngOnInit(): void {
 
@@ -71,6 +72,7 @@ export class AuthorCouponFormComponent  implements OnInit{
             next: (createdCoupon) => {
               console.log('Coupon created successfully:', createdCoupon);
               alert("Coupon has been succesfully created!")
+              this.router.navigate(['/tour']);
               // Handle success, e.g., redirect to a different page
             },
             error: (error) => {

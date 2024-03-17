@@ -13,7 +13,7 @@ import { ReviewTour } from './tours-show/ReviewTour.model';
 
 
 import { TouristEquipment } from './model/touristEquipment.model';
-import { NonNullAssert } from '@angular/compiler';
+import { NonNullAssert, Token } from '@angular/compiler';
 
 import { Problem } from './model/problem.model';
 import { ProblemMessage } from './model/problem-message.model';
@@ -335,6 +335,10 @@ export class MarketplaceService {
     return this.http.get<PagedResults<TourPurchaseToken>>(
       environment.apiHost + 'tokens'
     );
+  }
+
+  getAllTokensByTourist(touristId: number): Observable<TourPurchaseToken[]> {
+    return this.http.get<TourPurchaseToken[]>(environment.apiHost + 'tokens/' + touristId)
   }
 
   getPublishedTours(): Observable<PagedResults<Tour>> {

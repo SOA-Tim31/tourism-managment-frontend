@@ -1,12 +1,14 @@
 <form [formGroup]="couponForm" (ngSubmit)="submitForm()">
-    <div class="form-row">
-      <h1>Tour Name: {{ tour.name }}</h1>
+    <p class="hdr">Create coupon</p>
+    <div class="hdrs">
+      <div class="form-row">
+        <p>Tour Name:  {{ tour.name }}</p>
+      </div>
+          
+      <div class="form-row">
+        <p>Tour Price:  {{ tour.price }}$</p>
+      </div>
     </div>
-        
-    <div class="form-row">
-      <h1>Tour Price: {{ tour.price }}$</h1>
-    </div>
-  
     <div class="form-row">
       <mat-form-field>
         <input matInput formControlName="discount" placeholder="Discount (%)" type="number" min="1" max="100">
@@ -21,5 +23,5 @@
       </mat-form-field>
     </div>
   
-    <button mat-raised-button color="primary" type="submit">Submit</button>
+    <button mat-raised-button color="primary" type="submit">Create</button>
   </form>
