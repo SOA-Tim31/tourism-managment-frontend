@@ -32,14 +32,15 @@ export class TourObjectComponent implements OnInit {
 
   getObjects(): void {
     this.service.getObjects().subscribe({
-      next: (result: PagedResults<TourObject>) => {
-        this.tourObject = result.results;
+      next: (objects: TourObject[]) => {
+        this.tourObject = objects;
       },
-      error: (err: any) => {
-        console.log(err);
+      error: (error: any) => {
+        console.log(error);
       }
-    })
+    });
   }
+  
 
   onAddClicked(): void{
     this.shouldEdit = false;
