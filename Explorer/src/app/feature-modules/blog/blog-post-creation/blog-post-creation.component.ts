@@ -24,8 +24,8 @@ export class BlogPostCreationComponent {
 
   showDraftsPopup(): void{
     this.service.getBlogPosts().subscribe({
-      next: (result: PagedResults<BlogPost>) => {
-        this.userDrafts = result.results.filter(post => post.status === 'DRAFT' 
+      next: (result: BlogPost[]) => {
+        this.userDrafts = result.filter(post => post.status === 'DRAFT' 
           && post.authorId === this.tokenStorage.getUserId());;
         this.userDrafts.forEach(post => {
           post.creationDate = new Date(post.creationDate);

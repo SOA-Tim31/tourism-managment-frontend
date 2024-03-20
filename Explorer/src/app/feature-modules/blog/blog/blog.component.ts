@@ -29,8 +29,8 @@ export class BlogComponent {
 
   getBlogPosts(): void {
     this.service.getBlogPosts().subscribe({
-      next: (result: PagedResults<BlogPost>) => {
-        this.blogPosts = result.results;
+      next: (result: BlogPost[]) => {
+        this.blogPosts = result;
         this.blogPosts.forEach(post => {
 
           console.log(post.creationDate);
@@ -50,8 +50,8 @@ export class BlogComponent {
   }
   getFamousBlogPosts(): void {
     this.service.getBlogPosts().subscribe({
-      next: (result: PagedResults<BlogPost>) => {
-        this.blogPosts = result.results;
+      next: (result: BlogPost[]) => {
+        this.blogPosts = result;
         this.blogPosts.forEach(post => {
           console.log(post);
           post.creationDate = new Date(post.creationDate);
@@ -65,8 +65,8 @@ export class BlogComponent {
   }
   getActiveBlogPosts(): void {
     this.service.getBlogPosts().subscribe({
-      next: (result: PagedResults<BlogPost>) => {
-        this.blogPosts = result.results;
+      next: (result: BlogPost[]) => {
+        this.blogPosts = result;
         this.blogPosts.forEach(post => {
           console.log(post);
           post.creationDate = new Date(post.creationDate);

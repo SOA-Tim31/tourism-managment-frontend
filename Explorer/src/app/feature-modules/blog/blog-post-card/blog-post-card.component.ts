@@ -25,12 +25,15 @@ export class BlogPostCardComponent implements OnInit {
       this.getTourCharacteristics(this.post.tourId);
       this.getTourEquipment(this.post.tourId);
     }
+
+    console.log("IMAGE: ", this.post.imageURLs)
   }
   tourCharacteristics:TourCharacteristic[] = [];
   tour:Tour;
   @Input() post: BlogPost;
   currentImageIndex: number = 0;
 
+  
   get currentImage(): string {
     return this.post.imageURLs ? this.post.imageURLs[this.currentImageIndex] : '';
   }

@@ -14,8 +14,8 @@ export class BlogService {
 
   constructor(private http: HttpClient) { }
 
-  getBlogPosts(): Observable<PagedResults<BlogPost>> {
-    return this.http.get<PagedResults<BlogPost>>('https://localhost:44333/api/blog/blogpost');
+  getBlogPosts(): Observable<BlogPost[]> {
+    return this.http.get<BlogPost[]>('https://localhost:44333/api/blog/blogpost');
   }
 
   getById(blogPostId: number): Observable<BlogPost> {

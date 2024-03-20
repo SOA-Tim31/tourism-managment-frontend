@@ -2,23 +2,24 @@
   <div class="post-content">
       <h2 (click)="navigateToDetail(post)" class="title" >{{ post.title }}</h2>
       <hr class="line-divider"> <!-- Add this line divider -->
-      <ng-container *ngIf="post.imageURLs != null && post.imageURLs.length >= 1; else descriptionSection">
-        <button *ngIf="showNavArrows" class="nav-arrow left" (click)="prevImage()">
+      <img [src]="post.imageURLs" alt="" class="card-image">
+      <!-- <ng-container *ngIf="post.imageURLs != null && post.imageURLs.length >= 1; else descriptionSection"> -->
+        <!-- <button *ngIf="showNavArrows" class="nav-arrow left" (click)="prevImage()">
             <mat-icon>arrow_back</mat-icon>
-        </button> 
-        <div class="image-container"> 
+        </button>  -->
+        <!-- <div class="image-container"> 
               <img class="post-image" [src]="currentImage" alt="Post Image">
-          </div>
-        <button *ngIf="showNavArrows" class="nav-arrow right" (click)="nextImage()">
+          </div> -->
+        <!-- <button *ngIf="showNavArrows" class="nav-arrow right" (click)="nextImage()">
             <mat-icon>arrow_forward</mat-icon>
-        </button>
-      </ng-container>
+        </button> -->
+      <!-- </ng-container> -->
       <ng-template #descriptionSection>
           <p class="description" markdown>{{ post.description }}</p>
       </ng-template>
       
       <div>
-        <ul *ngIf="shouldDisplayTourData()">
+        <ul *ngIf="!shouldDisplayTourData()">
           <p><b>Informations about tour:</b></p>
           <li *ngFor="let characteristic of tourCharacteristics">
             
@@ -27,18 +28,18 @@
             <!-- Dodajte ostale podatke o karakteristikama ture koje želite prikazati -->
           </li>
         </ul>
-        <ul *ngIf="shouldDisplayTourData()">
+        <ul *ngIf="!shouldDisplayTourData()">
           <p><b>Tour equipment:</b></p>
           <li *ngFor="let e of equipmentList">
             <p>Name: {{ e.name }}</p>
             <p>Description: {{ e.name }}</p>
             
           </li>
-        </ul>
+      </ul>
       </div>
 
       <div class="author-date-container">
-        <small class="author" *ngIf="post.authorUsername">Posted by u/{{ post.authorUsername }}, </small>
+        <small class="author" *ngIf="post.username">Posted by u/{{ post.username }}, </small>
         <small class="date">{{ post.creationDate | date: 'medium' }}</small>
       </div>
   </div>
