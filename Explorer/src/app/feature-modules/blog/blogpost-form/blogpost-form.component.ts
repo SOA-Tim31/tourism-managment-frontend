@@ -50,7 +50,7 @@ export class BlogpostFormComponent implements OnChanges,OnInit {
     if(this.shouldEdit){
       this.blogPostForm.patchValue({title: this.blogPost.title || '',
       description: this.blogPost.description || '',
-      imageURLs: this.blogPost.imageURLs?.join(', ')});
+      imageURLs: this.blogPost.imageURLs});
     }
   }
 
@@ -65,21 +65,19 @@ export class BlogpostFormComponent implements OnChanges,OnInit {
   addBlogPost(): void{
     console.log(this.blogPostForm.value)
 
-    const imageURLsString = this.blogPostForm.value.imageURLs;
-    const imageURLs = imageURLsString
-      ? imageURLsString.split(',').map(url => String(url.trim()))
-      : [];
+    //const imageURLsString = this.blogPostForm.value.imageURLs;
+    //const imageURLs = imageURLsString;
 
 
     const blogPost = {
       id: 0,
       authorId: this.tokenStorage.getUserId() || 0,
       tourId:this.tourId,
-      authorUsername: null,
+      username: null,
       title: this.blogPostForm.value.title || '',
       description: this.blogPostForm.value.description || '',
       creationDate: new Date(),
-      imageURLs: imageURLs,
+      imageURLs: this.blogPostForm.value.imageURLs || '',
       comments: [],
       ratings: [],
       status: 'PUBLISHED'
@@ -106,21 +104,21 @@ export class BlogpostFormComponent implements OnChanges,OnInit {
   addBlogPostDraft(): void{
     console.log(this.blogPostForm.value)
 
-    const imageURLsString = this.blogPostForm.value.imageURLs;
-    const imageURLs = imageURLsString
-      ? imageURLsString.split(',').map(url => String(url.trim()))
-      : [];
+    //const imageURLsString = this.blogPostForm.value.imageURLs;
+    // const imageURLs = imageURLsString
+    //   ? imageURLsString.split(',').map(url => String(url.trim()))
+    //   : [];
 
 
     const blogPost = {
       id: 0,
       authorId: this.tokenStorage.getUserId() || 0,
       tourId:0,
-      authorUsername: null,
+      username: null,
       title: this.blogPostForm.value.title || '',
       description: this.blogPostForm.value.description || '',
       creationDate: new Date(),
-      imageURLs: imageURLs,
+      imageURLs:  this.blogPostForm.value.imageURLs || '',
       comments: [],
       ratings: [],
       status: 'DRAFT'
@@ -149,11 +147,11 @@ export class BlogpostFormComponent implements OnChanges,OnInit {
         id: this.blogPost.id,
         authorId: this.blogPost.authorId,
         tourId:0,
-        authorUsername: this.blogPost.authorUsername,
+        username: this.blogPost.username,
         title: this.blogPostForm.value.title || '',
         description: this.blogPostForm.value.description || '',
         creationDate: new Date(),
-        imageURLs: imageURLs,
+        imageURLs: this.blogPostForm.value.imageURLs || '',
         comments: this.blogPost.comments,
         ratings: this.blogPost.ratings,
         status: 'PUBLISHED'
@@ -181,11 +179,11 @@ export class BlogpostFormComponent implements OnChanges,OnInit {
       id: this.blogPost.id,
       authorId: this.blogPost.authorId,
       tourId:0,
-      authorUsername: this.blogPost.authorUsername,
+      username: this.blogPost.username,
       title: this.blogPostForm.value.title || '',
       description: this.blogPostForm.value.description || '',
       creationDate: this.blogPost.creationDate,
-      imageURLs: imageURLs,
+      imageURLs: this.blogPostForm.value.imageURLs || '',
       comments: this.blogPost.comments,
       ratings: this.blogPost.ratings,
       status: this.blogPost.status

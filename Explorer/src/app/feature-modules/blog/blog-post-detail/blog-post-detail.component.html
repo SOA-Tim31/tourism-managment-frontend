@@ -1,13 +1,13 @@
 <div class="blog-detail">
   <div class="header-container">
     <div class="buttons-part">
-      <button [disabled]="isClosed(post)" class="upvote" [class.active]="isUpvoted" (click)="upvote()">
+      <button  class="upvote" [class.active]="isUpvoted" (click)="upvote()">
         <mat-icon>arrow_upward</mat-icon>
       </button>
       <div class="rating">
         {{overall_rating}}
       </div>
-      <button [disabled]="isClosed(post)" class="downvote" [class.active]="isDownvoted" (click)="downvote()">
+      <button class="downvote" [class.active]="isDownvoted" (click)="downvote()">
         <mat-icon>arrow_downward</mat-icon>
       </button>
     </div>
@@ -29,7 +29,8 @@
       {{ post.description }}
     </div>
     <hr class="line-divider" *ngIf="post.imageURLs == null">
-    <ng-container *ngIf="post.imageURLs != null && post.imageURLs.length >= 1;">
+    <img [src]="post.imageURLs" alt="" class="card-image">
+    <!-- <ng-container *ngIf="post.imageURLs != null && post.imageURLs.length >= 1;">
       <div class="image-container">
         <button *ngIf="showNavArrows" class="nav-arrow left" (click)="prevImage()">
           <mat-icon>arrow_back</mat-icon>
@@ -41,21 +42,21 @@
           <mat-icon>arrow_forward</mat-icon>
         </button>
       </div>
-    </ng-container>
+    </ng-container> -->
     <hr class="line-divider">
     <div class="comments-section">
       <h3>Comments</h3>
-      <div *ngIf="!isClosed(post)" class="commentCreation">
+      <div class="commentCreation">
         <form [formGroup]="commentForm">
           <textarea formControlName="text" class="newCommentText" rows="4" placeholder="Leave a comment"></textarea>
         </form>
         <button type="submit" class="submit_button" (click)="addComment()"> Comment </button>
       </div>
     </div>
-    <div *ngIf="isClosed(post)" class="disabled-message">
+    <!-- <div *ngIf="isClosed(post)" class="disabled-message">
       <mat-icon class="attention-icon">warning</mat-icon>
       This blog post is closed and cannot be interacted with. You can only read it's content and comments.
-    </div>
+    </div> -->
     <div *ngIf="post.comments && post.comments.length > 0">
       
       <div class="comment" *ngFor="let comment of post.comments">

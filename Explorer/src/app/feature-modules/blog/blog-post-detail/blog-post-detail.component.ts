@@ -114,6 +114,7 @@ export class BlogPostDetailComponent implements OnInit {
   }
 
   isClosed(blogPost: BlogPost){
+    console.log("dosao dovde")
     return blogPost.status == 'CLOSED'
   }
   

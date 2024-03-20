@@ -161,3 +161,8 @@
     font-size: 0.6em; /* Adjust as needed */
     /* Add any other styles for author and date */
   }
+
+  .card-image{
+    width: 250px;
+    height: 100px;
+  }
