@@ -1,3 +1,4 @@
+
 <form [formGroup]="blogPostForm" class="blog-post-form">
     <div>
         <mat-form-field>
@@ -15,9 +16,6 @@
                     cdkAutosizeMaxRows="15">
                 </textarea>
             </mat-form-field>
-            <markdown cdkTextareaAutosize
-            cdkAutosizeMinRows="6" cdkAutosizeMaxRows="15" style="border-style:ridge; width: 100%;" [data]="blogPostForm.get('description')?.value">
-            </markdown>
         </div>
         <mat-form-field>
             <mat-label>Image URLs</mat-label>

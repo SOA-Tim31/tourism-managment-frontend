@@ -1,23 +1,24 @@
 <div class="landingPage">
     <div class="b1" >
-        <p class="top_margin"></p>
-        <p class="title">Where to go?</p>
-        <button class="search-button" raised-button [routerLink]="['/tourSearch']">
-            <div class="searchdiv">Search</div>
-            <div>
-                <mat-icon class="magnifier">search</mat-icon>
-            </div>
-        </button>
+      <p class="top_margin"></p>
+      <p class="title">Where to go?</p>
+      <button class="search-button" raised-button [routerLink]="['/tourSearch']">
+        <div class="searchdiv">Search</div>
+        <div>
+          <mat-icon class="magnifier">search</mat-icon>
+        </div>
+      </button>
     </div>
     <div class="b3">
       <xp-recommendations></xp-recommendations>
     </div>
-        <div class="b4">
-            <img class="img" src="assets/images/paris.jpg" alt="Slika"  width="1000">
-            <div class="overlay">
-            <h1 class="h1">Blog</h1>
-            <p class="p"> Here you can create a blog <br>and leave comments for it</p>
-            <button class="button" raised-button [routerLink]="['blog']">Create a blog</button>
-        </div>
+    <div class="b4">
+      <img class="img" src="assets/images/paris.jpg" alt="Slika"  width="1000">
+      <div class="overlay">
+        <h1 class="h1">Blog</h1>
+        <p class="p"> Here you can create a blog <br>and leave comments for it</p>
+        <button class="button" raised-button [routerLink]="['/blog']">Create a blog</button>
+      </div>
     </div>
 </div>
+<xp-footer></xp-footer>

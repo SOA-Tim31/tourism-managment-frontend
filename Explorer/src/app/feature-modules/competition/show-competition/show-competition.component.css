@@ -1,251 +1,281 @@
 @font-face {
-    font-family: 'Trip';
-    src: url(src\assets\Fonts\TripSans-Regular.ttf) format('truetype');
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
-  }
-  
-  @font-face {
-    font-family: 'Trip';
-    src: url(src\assets\Fonts\TripSans-Medium.ttf) format('truetype');
-    font-weight: medium;
-    font-style: normal;
-    font-display: swap;
-  }
-  
-  @font-face {
-    font-family: 'Trip';
-    src: url(src\assets\Fonts\TripSans-Bold.ttf) format('truetype');
-    font-weight: bold;
-    font-style: normal;
-    font-display: swap;
-  }
+  font-family: 'Trip';
+  src: url(src\assets\Fonts\TripSans-Regular.ttf) format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
 
-  
-  
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Trip", sans-serif;
-  }
-  
-  .body {
-    min-height: 85vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: transparent;
-  }
-  
-  /* Dodajte ove boje prema vašem izboru */
+@font-face {
+  font-family: 'Trip';
+  src: url(src\assets\Fonts\TripSans-Medium.ttf) format('truetype');
+  font-weight: medium;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Trip';
+  src: url(src\assets\Fonts\TripSans-Bold.ttf) format('truetype');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Trip", sans-serif;
+}
+
+.body {
+  min-height: 85vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+}
+
+/* Dodajte ove boje prema vašem izboru */
 .open-status {
-    color: green;
-  }
-  
-  .closed-status {
-    color: red;
-  }
-  
-  
-  .title {
-    font-size: 42px;
-    text-align: center;
-    margin-bottom: 56px;
-    color: darkblue;
-  }
-  
-  .slide-container {
-    max-width: 100%;
-    width: 100%;
-    padding: 40px 0;
-  }
-  
-  .slide-content {
-    border-radius: 10px;
-  }
-  
-  .card-wrapper {
-    align-items: flex-start;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    gap: 16px;
-    flex-wrap: wrap;
-  }
-  
-  .card {
-    width: auto;
-    height: 300px;
-    flex: 1;
-    border-radius: 10px;
-    display: flex;
-    flex-direction: column;
-    cursor: pointer;
-    box-shadow: 0 2px 16px 3px #dddddd;
-    transition: box-shadow 0.3s ease;
-  }
-  
-  .card:hover {
-    box-shadow: 0 4px 16px 3px #707070;
-  }
-  
-  .image-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .card-content {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding: 10px 24px;
-    max-width: 300px;
-  }
+  color: green;
+}
 
-  
-  .image-content {
-    position: relative;
-  }
-  
-  .overlay {
-    position: absolute;
-    left: 0;
-    bottom: -4px;
-    height: 18%;
-    width: 100%;
-    border-radius: 10px;
-    padding: 0 8px;
-    z-index: 2;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 4px;
-  }
-  
-  .tag {
-    font-size: 12px;
-    font-weight: medium;
-    color: #FFF;
-    background-color: #E23A55;
-    border-radius: 15px;
-    padding: 3px 9px;
-  }
-  
-  .card-image {
-    position: relative;
-    height: 100%;
-    max-height: 200px;
-    width: 100%;
-    border-radius: 10px 10px 0 0;
-    overflow: hidden;
-  }
-  
-  .card-image .card-img {
-    width: 300px;
-    height: 200px;
-    object-fit: cover;
-    border-radius: 10px 10px 0 0;
-    transition: transform 0.3s ease;
-  }
-  
-  .card:hover .card-image .card-img {
-    transform: scale(1.1);
-    transition: transform 0.3s ease;
-  }
-  
-  .name {
-    font-family: "Trip", "sans-serif";
-    font-size: 22px;
-    font-weight: bold;
-    color: #333;
-    text-align: left;
-    margin-top: 12px;
-  }
-  
-  .card-footer {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .price {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 16px;
-  }
-  
-  .price-text {
-    font-size: 16px;
-  }
-  
-  .price-number {
-    font-size: 22px;
-    font-weight: bold;
-  }
-  
-  .difficulty {
-    font-size: 14px;
-    border-radius: 6px;
-    padding: 2px 4px;
-    color: #FFF;
-  }
-  
-  .easy {
-    border: 2px solid green;
-    color: green;
-  }
-  
-  .moderate {
-    border: 2px solid darkorange;
-    color: darkorange;
-  }
-  
-  .difficult {
-    border: 2px solid red;
-    color: red;
-  }
-  
-  .desc-container {
-    overflow: hidden;
-    height: 150px;
-  }
-  
-  .description {
-    display: -webkit-box;
-    -webkit-line-clamp: 7;
-    -webkit-box-orient: vertical;
-    font-size: 14px;
-    color: #707070;
-    margin: 0 8px 16px 8px;
-    text-align: left;
-    overflow: hidden;
-    white-space: pre-wrap;
-  }
-  
-  .flexCol {
-   display: flex;
-   flex-direction: column;
-   justify-content: center;
-   align-items: center;
-   margin-bottom: 20px;
-  }
+.closed-status {
+  color: red;
+}
 
 
-  .card-selected {
-    width: auto;
-    flex: 1;
-    border-radius: 10px;
-    display: flex;
-    flex-direction: column;
-    cursor: pointer;
-    box-shadow: 0 2px 16px 3px rgb(91, 234, 25);
-    transition: box-shadow 0.7s ease;
-  }
+.title {
+  font-size: 42px;
+  text-align: center;
+  margin-top: 80px;
+  margin-bottom: 80px;
+  color: darkblue;
+}
+
+.slide-container {
+  max-width: 100%;
+  width: 100%;
+  padding-bottom: 40px;
+}
+
+.slide-content {
+  position: relative;
+}
+
+.img-add {
+  max-width: 100%;
+  width: fit-content;
+  height: 30%;
+  padding: 0;
+  /*padding: 40px 0;*/
+}
+
+.img-add::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  /*height: 55%;*/
+  /*background-image: url('../../../../assets/images/comp3.png');  !* Adjust the path based on your project structure *!*/
+  background-size: cover;
+  background-position: center bottom;  /* Set the background position to the center at the bottom */
+  background-repeat: no-repeat;  /* Prevent the background image from repeating */
+  z-index: -1;
+}
+
+.img-add img {
+  margin: 0;
+  width: 100%;
+  background-size: cover;
+}
+
+.card-wrapper {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.card {
+  width: auto;
+  height: 250px;
+  flex: 1;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  box-shadow: 0 2px 16px 3px #dddddd;
+  transition: box-shadow 0.3s ease;
+}
+
+.card:hover {
+  box-shadow: 0 4px 16px 3px #707070;
+}
+
+.image-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.card-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 10px 24px;
+  height: 100%;
+  width: 200px;
+}
+
+
+.image-content {
+  position: relative;
+}
+
+.overlay {
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  height: 18%;
+  width: 100%;
+  border-radius: 10px;
+  padding: 0 8px;
+  z-index: 2;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 4px;
+}
+
+.tag {
+  font-size: 12px;
+  font-weight: medium;
+  color: #FFF;
+  background-color: #E23A55;
+  border-radius: 15px;
+  padding: 3px 9px;
+}
+
+.card-image {
+  position: relative;
+  height: 100%;
+  max-height: 200px;
+  width: 100%;
+  border-radius: 10px 10px 0 0;
+  overflow: hidden;
+}
+
+.card-image .card-img {
+  width: 300px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 10px 10px 0 0;
+  transition: transform 0.3s ease;
+}
+
+.card:hover .card-image .card-img {
+  transform: scale(1.1);
+  transition: transform 0.3s ease;
+}
+
+.name {
+  font-family: "Trip", "sans-serif";
+  font-size: 22px;
+  font-weight: bold;
+  color: #333;
+  text-align: center;
+  margin-top: 12px;
+}
+
+.card-footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.price {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 16px;
+}
+
+.price-text {
+  font-size: 16px;
+}
+
+.price-number {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.difficulty {
+  font-size: 14px;
+  border-radius: 6px;
+  padding: 2px 4px;
+  color: #FFF;
+}
+
+.easy {
+  border: 2px solid green;
+  color: green;
+}
+
+.moderate {
+  border: 2px solid darkorange;
+  color: darkorange;
+}
+
+.difficult {
+  border: 2px solid red;
+  color: red;
+}
+
+.desc-container {
+  overflow: hidden;
+  height: 150px;
+}
+
+.description {
+  display: -webkit-box;
+  -webkit-line-clamp: 7;
+  -webkit-box-orient: vertical;
+  font-size: 14px;
+  color: #707070;
+  margin: 0 8px 16px 8px;
+  text-align: left;
+  overflow: hidden;
+  white-space: pre-wrap;
+}
+
+.flexCol {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+
+.card-selected {
+  width: auto;
+  flex: 1;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  box-shadow: 0 2px 16px 3px rgb(91, 234, 25);
+  transition: box-shadow 0.7s ease;
+}
 
 .startTour{
   margin-bottom: 20px;

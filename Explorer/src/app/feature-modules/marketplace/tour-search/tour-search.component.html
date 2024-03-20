@@ -83,7 +83,7 @@
             </span>
 
             <div class="card-image">
-              <img src="assets/images/slika1.jpeg" alt="" class="card-img">
+              <img [src]="tour.tourPoints[0].imageUrl" alt="" class="card-img">
             </div>
           </div>
 
@@ -110,9 +110,10 @@
               <p class="difficulty" [ngClass]="{'easy': tour.difficultyLevel === 'Easy', 'moderate': tour.difficultyLevel === 'Moderate', 'difficult': tour.difficultyLevel === 'Difficult'}">
                 {{ tour.difficultyLevel }}
               </p>
-              <button *ngIf="isTourist && isInCart(tour.id) == 0" (click)="addToCart(tour.id, tour.name, tour.price)">Add to Cart</button>
-                <p *ngIf="isTourist && isInCart(tour.id) == 1">Tour in cart</p>
-                <p *ngIf="isTourist && isInCart(tour.id) == 2">Tour owned</p>
+
+              <button class="btn-add-to-cart" *ngIf="isTourist && isInCart(tour.id) == 0" (click)="addToCart(tour.id, tour.name, tour.price)">Add to Cart</button>
+              <p class="tour-buy-info" *ngIf="isTourist && isInCart(tour.id) == 1">Tour in cart</p>
+              <p class="tour-buy-info" *ngIf="isTourist && isInCart(tour.id) == 2">Tour owned</p>
             </div>
           </div>
         </div>

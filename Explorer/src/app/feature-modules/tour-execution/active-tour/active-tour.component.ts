@@ -30,9 +30,14 @@ export class ActiveTourComponent implements OnChanges{
   isNotified: boolean = true;
   execution: TourExecution;
   executionPoints: TourExecutionTourPoint[] = [];
+  executionPointsBackup: TourExecutionTourPoint[] = [];
+  executionPointsBackupLoaded: boolean = false;
   tourPoints: TourPoint[] = [];
   tourPointsMap: { [key: number]: TourPoint } = {};
+  finishedTourPointsMap: { [key: number]: TourPoint } = {};
+  isFinishedFilled : boolean = false;
   accordionState: boolean[] = [];
+  activeTourId: number;
   private pollingInterval: any;
   @Output() positionUpdated=new EventEmitter<null>();
   currentPosition: TourExecutionPosition ={
@@ -59,23 +64,28 @@ export class ActiveTourComponent implements OnChanges{
     this.getTourExecutionPoints();
     this.getTourPoints();
     console.log("lol: ",this.activeTour.id)
-    
+    console.log("execution:", this.activeTour);
   }
 
   private startPolling(): void {
     this.pollingInterval = setInterval(() => {
-      this.updatePosition();
       this.getTourExecution(this.activeTour.id);
-      this.getTourExecutionPoints();
-
+      this.updatePosition();
+      
+      if(this.execution.status == "Completed"){
+        console.log("COMPLETEEEEEEEEEEEEEEEEEEEEEED");
+        this.executionPoints = this.executionPointsBackup;
+        
+      }else{
+        this.getTourExecutionPoints();
+        console.log("zavrsena tura execution points: ", this.executionPoints);
+        console.log("zavrsena tura backup", this.executionPointsBackup);
+      }
       
 
 
-      if(this.execution.status == "Completed" && this.isNotified){
-        alert("You completed tour");
-        this.isNotified = false;
-      }
-    }, 5000);
+      
+    }, 500);
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -214,7 +224,19 @@ export class ActiveTourComponent implements OnChanges{
       (data) => {
         //console.log(data);
         this.executionPoints = data.results;
+        this.executionPoints.sort((a, b) => a.id - b.id);
         console.log('points', this.executionPoints);
+
+        if(!this.executionPointsBackupLoaded && this.executionPoints.length > 0){
+          this.executionPointsBackup = [...this.executionPoints];
+          this.executionPointsBackupLoaded = true;
+          this.setBackupPointsToCompleted();
+          console.log("execution points backup: ", this.executionPointsBackup);
+        }
+
+        if(this.executionPointsBackupLoaded && this.executionPoints.length < 1){
+          this.executionPoints = this.executionPointsBackup;
+        }
       },
       (error) => {
         console.error(error);
@@ -224,8 +246,14 @@ export class ActiveTourComponent implements OnChanges{
 
   }
 
+  setBackupPointsToCompleted(): void {
+    for (const point of this.executionPointsBackup) {
+      point.completed = true;
+    }
+  }
+
   getTourPoints(): void{
-    this.service.getTourPointsByTourId(this.activeTour.tourId).subscribe(
+    this.service.getTourPointsByTourId(this.tourId).subscribe(
       (data) => {
         // Handle the response data here
         this.tourPoints = data.results;
@@ -248,6 +276,8 @@ export class ActiveTourComponent implements OnChanges{
     this.tourPoints.forEach((point) => {
       this.tourPointsMap[point.id] = point;
     });
+    
+    
   }
 
   toggleAccordion(index: number): void {
@@ -263,5 +293,22 @@ export class ActiveTourComponent implements OnChanges{
   ngOnDestroy(): void {
     clearInterval(this.pollingInterval);
   }
+  
+  getRelativeTime(completionTime: string): string {
+    const completionDate = new Date(completionTime);
+    const currentTime = new Date();
+    const timeDifference = currentTime.getTime() - completionDate.getTime();
+    
+    const minutesAgo = Math.floor(timeDifference / (1000 * 60));
+    
+    if(this.execution.status == "Completed"){
+      return '';
+    }
 
+    if (minutesAgo < 1) {
+      return 'just now';
+    } else {
+      return `${minutesAgo} ${minutesAgo === 1 ? 'minute' : 'minutes'} ago`;
+    }
+  }
 }

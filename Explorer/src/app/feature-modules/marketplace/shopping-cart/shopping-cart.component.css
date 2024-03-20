@@ -1,86 +1,103 @@
 /* shopping-cart.component.css */
 .shopping-cart-container {
-    max-width: 600px;
-    margin: 20px auto;
-    padding: 20px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    background-color: #fff;
-  }
-  
-  .order-items-list {
-    list-style-type: none;
-    padding: 0;
-  }
-  
-  .order-item {
-    border: 1px solid #ddd;
-    padding: 10px;
-    margin-bottom: 10px;
-    border-radius: 8px;
-  }
-  
-  .tour-name {
-    font-weight: bold;
-  }
-  
-  .price {
-    color: #007bff;
-  }
-  
-  .remove-button {
-    background-color: #dc3545;
-    color: #fff;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  .total-purchase-container {
-    margin-top: 20px;
-    text-align: right;
-  }
-  
-  .total {
-    font-weight: bold;
-  }
-  
-  .purchase-button {
-    background-color: #28a745;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  .empty-cart-message {
-    text-align: center;
-    margin-top: 20px;
-    color: #777;
-  }
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #fff;
+}
+
+.order-items-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.order-item {
+  border: 1px solid #ddd;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+}
+
+.tour-name {
+  font-weight: bold;
+}
+
+.price {
+  color: #007bff;
+}
+
+.remove-button {
+  background-color: #dc3545;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.total-purchase-container {
+  margin-top: 20px;
+  text-align: right;
+}
+
+.hdr {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.balance-container{
+  text-align: right;
+  align-items: center;
+  margin-right: 10px;
+}
+
+.balance{
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.total {
+  font-weight: bold;
+}
+
+.purchase-button {
+  background-color: #28a745;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.empty-cart-message {
+  text-align: center;
+  margin-top: 20px;
+  color: #777;
+}
 
 
 .coupon-container {
-  display: flex;
-  gap: 10px; 
-  margin-bottom: 10px; 
+display: flex;
+gap: 10px; 
+margin-bottom: 10px; 
 }
 
 .coupon-container input {
-  padding: 5px;
-  border: 1px solid #ccc;
+padding: 5px;
+border: 1px solid #ccc;
 }
 
 .coupon-container button {
-  padding: 5px 10px;
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  cursor: pointer;
+padding: 5px 10px;
+background-color: #007bff;
+color: #fff;
+border: none;
+cursor: pointer;
 }
 .currency{
-  width: 70px;
+width: 70px;
 }
-  

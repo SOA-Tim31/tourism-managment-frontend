@@ -32,16 +32,15 @@ export class BlogComponent {
       next: (result: BlogPost[]) => {
         this.blogPosts = result;
         this.blogPosts.forEach(post => {
-
           console.log(post.creationDate);
           post.creationDate = new Date(post.creationDate);
           console.log(post);
         });
       },
-      error: (err: any) =>{
+      error: (err: any) => {
         console.log(err);
       }
-    })
+    });
   }
 
   

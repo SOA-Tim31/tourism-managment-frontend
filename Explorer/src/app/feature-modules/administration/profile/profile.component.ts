@@ -7,6 +7,7 @@ import {GoogleAnalyticsService} from "../../../infrastructure/google-analytics/g
 import { TouristXP } from '../model/tourist-xp.model';
 import { TokenStorage } from 'src/app/infrastructure/auth/jwt/token.service';
 import { PagedResults } from 'src/app/shared/model/paged-results.model';
+import { User } from 'src/app/infrastructure/auth/model/user.model';
 
 @Component({
   selector: 'xp-profile',
@@ -16,6 +17,7 @@ import { PagedResults } from 'src/app/shared/model/paged-results.model';
 export class ProfileComponent implements OnInit {
 
   userProfile: Profile = {} as Profile;
+  user: User;
   isEditMode: boolean = false;
   shouldRenderNotifications: boolean = false;
   shouldRenderMessages: boolean = false;
@@ -38,10 +40,10 @@ export class ProfileComponent implements OnInit {
       if (user.username) {
 
 
-        const userId = user.id;
+        this.user = user
 
 
-        this.service.getProfile(userId).subscribe({
+        this.service.getProfile(user.id).subscribe({
           next: (data: Profile) => {
             this.userProfile.id = data.id;
             this.userProfile.userId = data.userId;
@@ -51,6 +53,7 @@ export class ProfileComponent implements OnInit {
             this.userProfile.profileImage = data.profileImage;
             this.userProfile.bio = data.bio;
             this.userProfile.quote = data.quote;
+            this.userProfile.balance = data.balance;
             //alert(JSON.stringify(this.userProfile));
           },
           error: (err: any) => {

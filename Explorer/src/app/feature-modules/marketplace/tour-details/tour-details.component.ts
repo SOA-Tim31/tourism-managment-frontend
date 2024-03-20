@@ -5,6 +5,7 @@ import { Tour } from '../../tour-authoring/tour/model/tour.model';
 import { AuthService } from 'src/app/infrastructure/auth/auth.service';
 import { ShoppingCart, OrderItem } from '../model/shopping-cart.model';
 import {forkJoin} from "rxjs";
+import { TourPurchaseToken } from '../model/TourPurchaseToken.model';
 //import { TourOrderItem } from '../model/TourOrderItem.model';
 
 @Component({
@@ -17,6 +18,7 @@ export class TourDetailsComponent implements OnInit{
   shoppingCart: ShoppingCart = {} as ShoppingCart;
   tourId: number;
   tour: Tour = {} as Tour;
+  tokens: TourPurchaseToken[] = [];
   buyButton: boolean;
 
   constructor(private service: MarketplaceService, private route: ActivatedRoute, private auth: AuthService){
@@ -56,14 +58,21 @@ export class TourDetailsComponent implements OnInit{
         this.service.getShoppingCart(userId).subscribe({
           next: (data: ShoppingCart) => {
             this.shoppingCart = data;
-            console.log(this.shoppingCart);
-            console.log(this.tourId);
-            console.log(this.shoppingCart.orderItems.some((orderItem) => {
-              return orderItem.idTour === this.tourId;
-            }));
-            this.buyButton = !this.shoppingCart.orderItems.some((orderItem) => {
-              return orderItem.idTour === this.tourId;
+            this.service.getAllTokensByTourist(userId).subscribe({
+              next: (tokens: TourPurchaseToken[]) => {
+                this.tokens = tokens
+                
+                this.shouldRenderBuyButton()
+              
+              },
+              error: (err: any) => {
+                console.log(err);
+              }
             });
+
+            /*this.buyButton = !this.shoppingCart.orderItems.some((orderItem) => {
+              return orderItem.idTour === this.tourId;
+            });*/
           },
           error: (err: any) => {
             console.log(err);
@@ -102,7 +111,19 @@ export class TourDetailsComponent implements OnInit{
         error: (err: any) => {
           console.log(err);
         }
-      });*/
+      });*/   
   }
+
+  shouldRenderBuyButton(){
+    this.buyButton = 
+    !(this.shoppingCart.orderItems.some((orderItem) => {
+      return orderItem.idTour === this.tourId;
+    }) || this.tokens.some((token) => {
+      return token.idTour === this.tourId;
+    }))
+    console.log("Buy Button:", this.buyButton);
+  }
+
+
 
 }

@@ -10,15 +10,17 @@ div {
 }
 
 .form-container {
-  float: left; /* Float the form container to the left */
+  /*float: left;*/
   width: 100%; /* Adjust the width as needed */
   padding: 20px; /* Add padding for spacing */
+  margin: auto;
 }
 
 .container {
   display: flex;
   flex-direction: row;
   width: 100%;
+  gap: 56px;
 }
 
 .map-container {
@@ -29,6 +31,7 @@ div {
   border-radius: 30px;
   padding: 20px;
   box-sizing: border-box;
+  border: none;
 }
 
 .clearfix::after {
@@ -38,28 +41,34 @@ div {
 }
 
 .label {
-  font-size: 1.7em;
-  text-transform: uppercase;
-  color: #4e79a7;
-  font-family: Georgia, serif;
+  font-family: 'Trip';
+  font-size: 24px;
+  /*text-transform: uppercase;*/
   background-color: rgba(246, 245, 245, 0.8);
   border-radius: 10px;
-
   padding: 5px 10px;
+  margin-bottom: 24px;
 }
 
 .inner-container {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   gap: 100px;
+  margin-left: 88px;
+  margin-right: 0;
 }
 
 .select {
   font-size: 18px;
   width: 150px;
-  height: 25px;
-  border-radius: 10px;
+  /*height: 25px;*/
+  border-radius: 8px;
   background-color: rgba(246, 245, 245, 0.8);
+  border: 1px solid black;
+  padding: 4px 6px;
+  /*margin: auto;*/
+  margin-left: 12px;
 }
 
 .button {
@@ -72,7 +81,7 @@ div {
 }
 
 .notification {
-  color: rgba(246, 245, 245, 0.8);
+  /*color: rgba(246, 245, 245, 0.8);*/
   text-align: left;
 }
 
@@ -89,6 +98,15 @@ div {
   font-family: 'Trip', sans-serif;
   z-index: 1000; /* Adjust the value as needed to make sure it's higher than other elements */
 }
+
+/*::ng-deep .map-container app-map .map-frame {*/
+/*  width: 400px;*/
+/*}*/
+
+/*::ng-deep .map-container app-map .map-frame #map{*/
+/*  height: 400px;*/
+/*  width: 400px;*/
+/*}*/
 
 
 .popup {

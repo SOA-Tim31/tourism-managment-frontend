@@ -3,7 +3,7 @@
     <div class="container">
       <div class="inner-container">
         <div>
-          <p class="label">Create check point for this tour:</p>
+          <p class="label">Create check point for this tour</p>
           <mat-form-field>
             <mat-label>Name</mat-label>
             <input matInput formControlName="name" type="text" />
@@ -27,10 +27,11 @@
             <mat-label>Secret</mat-label>
             <input matInput type="text" formControlName="secret" />
           </mat-form-field>
+
         </div>
         <div>
           <div [formGroup]="yourFormGroup">
-            <label for="transport" class="label">Choose transport type:</label>
+            <label for="transport" class="label">Choose transport type</label>
             <select
               id="transport"
               formControlName="selectedTransport"
@@ -52,16 +53,16 @@
           >
             Save tour point
           </button>
-          <button
-            class="button"
-            *ngIf="!shouldEdit"
-            mat-raised-button
-            type="submit"
-            color="primary"
-            (click)="openAddEncounterPopup()"
-          >
-            Save tour point and add encounter
-          </button>
+<!--          <button-->
+<!--            class="button"-->
+<!--            *ngIf="!shouldEdit"-->
+<!--            mat-raised-button-->
+<!--            type="submit"-->
+<!--            color="primary"-->
+<!--            (click)="openAddEncounterPopup()"-->
+<!--          >-->
+<!--            Save tour point and add encounter-->
+<!--          </button>-->
           <button
             class="button"
             *ngIf="!shouldEdit"
@@ -73,7 +74,7 @@
             Finish and set characteristics
           </button>
           <p class="notification">
-            ❕Before pressing the finish button,please select appropriate
+             ! Before pressing the finish button,please select appropriate
             transport type
           </p>
         </div>
@@ -151,16 +152,16 @@
                 <input matInput type="number" formControlName="touristsRequiredForCompletion" placeholder="Tourists Required">
             </mat-form-field>
         </div>
-        <div>  
+        <div>
             <mat-form-field class="form-group" *ngIf="isLocation" >
                 <mat-label>Hidden location image</mat-label>
                 <input matInput type="text" formControlName="imageURL" placeholder="Image">
             </mat-form-field>
-        </div> 
+        </div>
         <div>
           <mat-checkbox formControlName="includeCheckbox">Include Checkbox</mat-checkbox>
         </div>
-        <div>     
+        <div>
             <span >
                 <button mat-raised-button type="submit" color="primary" class="button" (click)="addEncounter()" >Post</button>
                 <button mat-raised-button type="submit" color="primary" class="button" (click)="closePopup()">Cancel</button>

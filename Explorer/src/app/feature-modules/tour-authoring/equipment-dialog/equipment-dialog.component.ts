@@ -45,41 +45,26 @@ export class EquipmentDialogComponent implements OnInit {
   }
 
   setSelectedStatus(equipmentItem: Equipment): boolean {
-    if (this.selectedTour && this.selectedTour.id !== undefined) {
-      const tourId = this.selectedTour.id;
-      console.log(tourId);
-      if (tourId) {
-        this.toureqService
-          .getEquipmentForTour(tourId)
-          .subscribe((tourEquipmentList: EquipmentTour[]) => {
-            const selectedEquipmentIds = tourEquipmentList.map(
-              (item) => item.equipmentId
-            );
-            console.log('Tour Equipment List:', tourEquipmentList);
-
-            console.log('Selected Equipment IDs:', selectedEquipmentIds);
-
-            this.equipmentService
-              .getEquipment()
-              .subscribe((pagedResults: PagedResults<Equipment>) => {
-                this.equipment = pagedResults.results;
-                this.equipment.forEach((equipment) => {
-                  equipment.selected = selectedEquipmentIds.includes(
-                    equipment.id
-                  );
-
-                  if (equipment.selected === true) {
-                    console.log('AAAAAAAAA');
-                    equipmentItem.selected === true;
-                  }
-                });
-              });
-          });
-      }
+    if (this.selectedTour && this.selectedTour.id) {
+        const tourId = this.selectedTour.id;
+        console.log(tourId);
+        this.toureqService.getEquipmentForTour(tourId).subscribe((tourEquipmentList: EquipmentTour[]) => {
+            if (tourEquipmentList && tourEquipmentList.length > 0) {
+                const selectedEquipmentIds = tourEquipmentList.map(item => item.equipmentId);
+                equipmentItem.selected = selectedEquipmentIds.includes(equipmentItem.id);
+            } else {
+                // Ako nema pronađene opreme za turu, postavljamo selected na false
+                equipmentItem.selected = false;
+            }
+        });
+    } else {
+        equipmentItem.selected = false;
     }
 
     return true;
-  }
+}
+
+
 
   dodajOpremu() {
     if (this.selectedTour) {

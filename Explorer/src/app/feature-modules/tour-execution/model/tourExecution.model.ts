@@ -46,7 +46,7 @@ export interface TourPoint {
   latitude: number;
   longitude: number;
   secret: string;
-
+  imageUrl: string;
 }
 
 export interface TourExecutionDetail {

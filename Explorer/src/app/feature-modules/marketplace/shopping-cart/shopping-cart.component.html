@@ -1,5 +1,11 @@
 <div class="shopping-cart-container">
-  <h3>Shopping Cart</h3>
+  <div class="hdr">
+    <h3>Shopping Cart</h3>
+    <div class="balance-container">
+      <p class="balance" *ngIf="shouldShowOriginal; else convertedBalance">Balance: {{ profile.balance }}</p>
+      <ng-template #convertedBalance><p class="balance">Balance: {{ convertedCurrency(profile.balance) }}</p></ng-template>
+    </div>
+  </div>
   <div *ngIf="shoppingCart.orderItems.length > 0">
     <ul class="order-items-list">
       <li *ngFor="let orderItem of shoppingCart.orderItems">

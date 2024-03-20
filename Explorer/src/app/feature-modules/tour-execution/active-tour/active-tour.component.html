@@ -1,34 +1,40 @@
 <div *ngIf="activeTour" class="tour-window">
   <div class="tour-details">
     <div class="tour-image">
-      <img src="assets/images/slika2.jpg" alt="" class="card-img">
+      <img [src]="activeTour.tour.tourPoints[0].imageUrl" alt="" class="card-img">
     </div>
 
     <div class="tour-information">
       <h2>{{ activeTour.tour.name }}</h2>
-      <p class="tour-description">Description: {{ activeTour.tour.description }}</p>
-      <p>Difficulty Level: {{ activeTour.tour.difficultyLevel }}</p>
+      <p class="tour-description">{{ activeTour.tour.description }}</p>
       <button
         mat-raised-button
         type="submit"
         color="primary"
-        class="button-6"
+        class="button-30"
         (click)="updateStatusToAbandoned()">
         Aband
     </button>
     </div>  
   </div>
-
   <div class="bottom-information">
     <div class="tour-points">
       <h3> Tour Points: </h3>
       <div *ngFor="let executionPoint of executionPoints; let i = index" class="tour-point">
         <div class="accordion">
           <div (click)="toggleAccordion(i)" class="accordion-header" [class.open]="isAccordionOpen(i)">
+            <div class="accordion-header-plus">
             <span class="accordion-toggle">{{ isAccordionOpen(i) ? '-' : '+' }}</span>
             <p class="accordion-title">{{ tourPointsMap[executionPoint.tourPointId].name }}</p>
           </div>
-          
+            <ng-container *ngIf="executionPoint.completed">
+            <p *ngIf="executionPoint.completed" class="minutes-ago">{{ getRelativeTime(executionPoint.completionTime) }}</p>
+              <i class="gg-lock-unlock"></i>
+            </ng-container>
+            <ng-container *ngIf="!executionPoint.completed">
+              <i class="gg-lock"></i>
+            </ng-container>
+          </div>
           <!-- Use ngIf to conditionally show/hide the content based on the accordion state -->
           <div *ngIf="isAccordionOpen(i)" class="accordion-content open">
             
@@ -37,12 +43,11 @@
             <!-- Load TourPoint based on the TourExecutionTourPoint's tourPointId -->
             <ng-container *ngIf="tourPointsMap[executionPoint.tourPointId]">
               <p> {{ tourPointsMap[executionPoint.tourPointId].description }}</p>
-              <p>Completed: {{ executionPoint.completed ? 'Yes' : 'No' }}</p>
               
             </ng-container>
             
-            <p *ngIf="executionPoint.completed">{{ tourPointsMap[executionPoint.tourPointId].secret }}</p>
-            <p *ngIf="executionPoint.completed">Completion Time: {{ executionPoint.completionTime | date: 'medium' }}</p>
+            <p *ngIf="executionPoint.completed"><b>Secret:</b> {{ tourPointsMap[executionPoint.tourPointId].secret }}</p>
+            <p *ngIf="executionPoint.completed">Completed {{ getRelativeTime(executionPoint.completionTime) }}</p>
             <p *ngIf="!executionPoint.completed"> First complete tour point to unlock its secrets !  </p>
 
           </div>

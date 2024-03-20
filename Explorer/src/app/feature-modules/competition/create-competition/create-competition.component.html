@@ -1,7 +1,7 @@
-<div class="wraper">
+<div class="wrapper">
   <form [formGroup]="competitionForm">
     <div class="form-wrap">
-      <p class="label">Create new competition:</p>
+      <p class="label">Create new competition</p>
       <mat-form-field>
         <mat-label>Choose tour</mat-label>
         <mat-select formControlName="tours">
@@ -27,14 +27,7 @@
         <input matInput formControlName="duration" type="number" />
       </mat-form-field>
 
-      <button
-        class="button"
-        type="submit"
-        color="primary"
-        (click)="addCompetition()"
-      >
-        Add competition
-      </button>
+      <button class="button" type="submit" color="primary" (click)="addCompetition()">Add competition</button>
     </div>
   </form>
 

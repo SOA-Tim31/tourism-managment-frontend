@@ -1,4 +1,11 @@
 /* tour-details.component.css */
+@font-face {
+  font-family: 'Trip';
+  src: url(src\assets\Fonts\TripSans-Regular.ttf) format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
 
 .tour-details-container {
     max-width: 800px;  /* Adjust the max-width as needed */
@@ -7,6 +14,7 @@
   border: 1px solid #ddd;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-top: 50px;
   }
   
   .tour-header {
@@ -38,10 +46,13 @@
   .tour-info {
     display: flex;
     margin-top: 20px;
+    margin-left: 20px;
+    flex-direction: row;
+    justify-content: space-between;
   }
   
   .tour-image img {
-    max-width: 90%;
+    max-width: 300px;
     height: auto;
     border-radius: 8px;
     flex-shrink: 0;
@@ -51,6 +62,8 @@
   .tour-description {
     margin-top: 15px;
     flex: 1;
+    margin-left: 20px;
+    margin-right: 20px;
    /* margin-left: 20px;*/
   }
   
@@ -58,11 +71,13 @@
     font-size: 16px;
     color: #333;
     margin-bottom: 10px;
+    font-family: "Trip", sans-serif;
   }
   
   .tour-details {
     flex: 1;
-    margin-left: 10px;
+    margin-left: 30px;
+
   }
   
   .price,
