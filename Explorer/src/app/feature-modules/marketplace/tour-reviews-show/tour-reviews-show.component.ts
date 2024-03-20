@@ -44,20 +44,24 @@ export class TourReviewsShowComponent {
 
  
 
-  getUserReviews(){
+  getUserReviews() {
     this.tourReviewService.getAllReviews().subscribe({
-      next: (reviews : PagedResults<TourReview>)=>{
-       this.userReviews= reviews.results.filter(review=>{
-        return review.touristId== this.loggedInUser.id;
-       });
-       this._observableList.next(this.userReviews);
+      next: (reviews: TourReview[]) => {
+        if (reviews && Array.isArray(reviews)) { 
+          this.userReviews = reviews.filter(review => review.touristId === this.loggedInUser.id);
+          this._observableList.next(this.userReviews);
           console.log("Recenzije: ", this.userReviews);
+        } else {
+          console.log("No reviews found or invalid response format.");
+          console.log("Reviews su:", reviews); 
+        }
       },
-      error: (error)=>{
-        console.log(error);
+      error: (error) => {
+        console.log("Error fetching user reviews:", error);
       }
-    })
+    });
   }
+  
 
   delete(review: TourReview){
     this.tourReviewService.deleteReview(review).subscribe({

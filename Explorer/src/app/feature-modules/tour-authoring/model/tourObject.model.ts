@@ -1,5 +1,6 @@
 export interface TourObject {
     id?: number,
+    tourId?:number,
     name: string,
     description: string,
     imageUrl: string,
