@@ -1,36 +1,38 @@
 <div class="body">
- 
-  
+
+
   <div class="slide-container">
-
-    <div class="title">All competitions</div>
-  <div class="flexCol">
-    
-    <div class="slide-content">
-
-      <div class="card-wrapper">
-        <button *ngFor="let competition of competitions" (click)="selectCompetition(competition)">
-        <div class="card">
-
-          <div class="card-content">
-            <h2 class="name">{{ competition.name }}</h2>
-
-            <div class="desc-container">
-              <p class="description">{{ competition.startDate }}</p>
-            </div>
-
-            <div class="desc-container">
-              <p class="description" [ngStyle]="{'color': competition.status === 'Open' ? 'green' : 'red'}">{{ competition.status }}</p>
-            </div>
-
-          </div>
-
-        </div>
-        </button>
-      </div>
+    <div class="img-add">
+      <img src="../../../../assets/images/comp3.png">
     </div>
-    
+    <div class="title">All competitions</div>
+    <div class="flexCol">
+
+      <div class="slide-content">
+
+        <div class="card-wrapper">
+          <button *ngFor="let competition of competitions" (click)="selectCompetition(competition)">
+            <div class="card">
+
+              <div class="card-content">
+                <h2 class="name">{{ competition.name }}</h2>
+
+                <div class="desc-container">
+                  <p class="description">{{ formatDate(competition.startDate) }}</p>
+                </div>
+
+                <div class="desc-container">
+                  <p class="description" [ngStyle]="{'color': competition.status === 'Open' ? 'green' : 'red'}">{{ competition.status }}</p>
+                </div>
+
+              </div>
+
+            </div>
+          </button>
+        </div>
+      </div>
+
+    </div>
   </div>
-</div>
 
 </div>

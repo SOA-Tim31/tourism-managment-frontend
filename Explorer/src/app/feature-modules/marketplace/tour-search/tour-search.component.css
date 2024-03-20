@@ -23,9 +23,14 @@
 }
 
 .topDiv {
-  background-color: white;
-  padding-left: 0;
-  padding-right: 0;
+  background-color: #FAF9F6;
+  margin: 0;
+  padding-left: 12%;
+  padding-right: 12%;
+  font-size: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .search-container {
@@ -150,8 +155,6 @@
   box-shadow: 0 2px 5px 1px #333333;
 }
 
-
-
 .tours-view {
   width: 100%;
   align-items: center;
@@ -191,7 +194,7 @@
   border-radius: 10px;
   display: flex;
   flex-direction: column;
-  cursor: pointer;
+  /*cursor: pointer;*/
   box-shadow: 0 2px 16px 3px #dddddd;
   transition: box-shadow 0.3s ease;
 }
@@ -277,24 +280,28 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  padding-bottom: 10px;
 }
 
 .price {
   display: flex;
+  height: 100%;
   flex-direction: row;
   align-items: center;
   gap: 16px;
 }
 
 .price-text {
-  font-size: 16px;
+  font-size: 18px;
   font-family: 'Trip';
   font-weight: normal;
+  margin: 0;
 }
 
 .price-number {
   font-size: 22px;
   font-weight: bold;
+  margin: 0;
 }
 
 .discount-price {
@@ -324,6 +331,7 @@
 }
 
 .difficulty {
+  margin: 0;
   font-size: 14px;
   border-radius: 6px;
   padding: 2px 4px;
@@ -370,4 +378,27 @@
   text-align: left;
   overflow: hidden;
   white-space: pre-wrap;
+}
+
+.btn-add-to-cart {
+  font-family: 'Trip';
+  font-weight: medium;
+  margin: 0;
+  font-size: 14px;
+  padding: 6px 8px;
+  border-radius: 6px;
+  color: white;
+  border: none;
+  background-color: #4CAF50;
+}
+
+.btn-add-to-cart:hover {
+  background-color: #45a049;
+  cursor: pointer;
+}
+
+.tour-buy-info {
+  margin: 0;
+  font-family: 'Trip';
+  font-size: 18px;
 }

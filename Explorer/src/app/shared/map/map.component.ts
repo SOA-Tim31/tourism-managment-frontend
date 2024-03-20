@@ -18,6 +18,7 @@ import { MarketplaceService } from 'src/app/feature-modules/marketplace/marketpl
 import { EncountersService } from 'src/app/feature-modules/encounters/encounters.service';
 import { PagedResults } from '../model/paged-results.model';
 import { Encounter } from 'src/app/feature-modules/encounters/model/encounter.model';
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 
 @Component({
@@ -50,7 +51,8 @@ export class MapComponent implements AfterViewInit {
     private marketplaceService: MarketplaceService,
     private administrationService: AdministrationService,
     private tokenStorage: TokenStorage,
-    private encounterService: EncountersService
+    private encounterService: EncountersService,
+    private snackBar:MatSnackBar
   ) {}
 
   private initMap(): void {
@@ -119,7 +121,7 @@ export class MapComponent implements AfterViewInit {
           radius: radius * 1000,
         }).addTo(this.map);
         const tours = this.service.getArrayCoordinates();
-        this.service.getArrayCoordinates().subscribe((tours) => {    
+        this.service.getArrayCoordinates().subscribe((tours) => {
           tours.forEach((t) => {
             if(t.tourPoints[0].latitude && t.tourPoints[0].longitude) {
               const tooltip = L.tooltip({
@@ -251,7 +253,7 @@ export class MapComponent implements AfterViewInit {
 
       const mp = new L.Marker([lat, lng]).addTo(this.map);
 
-      if (!this.saveOnlyLatest) alert(mp.getLatLng()); //ovo samo sklanja za tur src post mi smeta
+      if (!this.saveOnlyLatest) this.openSnackBar("Location set."); //ovo samo sklanja za tur src post mi smeta
     });
   }
 
@@ -437,5 +439,11 @@ export class MapComponent implements AfterViewInit {
         console.error('Greška prilikom dohvatanja objekata:', error);
       }
     );
+  }
+
+  private openSnackBar(message: string): void {
+    this.snackBar.open(message, 'Close', {
+      duration: 30000,
+    });
   }
 }

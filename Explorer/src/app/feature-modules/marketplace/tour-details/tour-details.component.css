@@ -1,5 +1,23 @@
 /* tour-details.component.css */
 
+.purchased {
+  border: 2px solid #007800;
+  border-radius: 20px; /* Adjust the border-radius to control the pill shape */
+  padding: 5px 20px; /* Adjust the padding to control the width of the pill */
+  background-color: rgb(210, 245, 210);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.lbl {
+  margin: 0px 5px;
+  color: #007800;
+}
+
 .tour-details-container {
     max-width: 800px;  /* Adjust the max-width as needed */
   margin: 0 auto;

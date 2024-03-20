@@ -1,6 +1,6 @@
 <div id="ba" class="custom-toolbar">
   <div id="ba" class="inner">
-    <p raised-button [routerLink]="['home']">Explorer</p>
+    <p raised-button [routerLink]="['home']">LubuTravel</p>
     <div id="buttons">
       <button class="nbutton" raised-button [routerLink]="['home']">
         Home
@@ -62,7 +62,7 @@
             <!-- <button class="nbutton" *ngIf="user && user.role === 'tourist'" raised-button [routerLink]="['problems']">Solve problems</button> -->
 
             <button class="nbutton" *ngIf="user && user.role === 'author'" raised-button [routerLink]="['tour']">Add Tour</button>
-            <button class="nbutton" *ngIf="user && user.role === 'author'" raised-button [routerLink]="['private-tour-points']">Private Tour Points</button>
+<!--            <button class="nbutton" *ngIf="user && user.role === 'author'" raised-button [routerLink]="['private-tour-points']">Private Tour Points</button>-->
             <button class="nbutton" *ngIf="user && user.role === 'author'" raised-button [routerLink]="['problems']">Problem Chats</button>
             <button class="nbutton" *ngIf="user && user.role === 'author'" raised-button [routerLink]="['tourStatistics']">Tour statistics</button>
 
@@ -137,6 +137,24 @@
         [routerLink]="['show-competitions']"
       >
         Competitions
+      </button>
+
+      <button
+        class="nbutton"
+        *ngIf="user && user.role === 'tourist'"
+        raised-button
+        [routerLink]="['blog']"
+      >
+        Blog
+      </button>
+
+      <button
+        class="nbutton"
+        *ngIf="user && user.role === 'tourist'"
+        raised-button
+        [routerLink]="['gallery']"
+      >
+        Visual gallery
       </button>
 
 <!--        <div *ngIf="user && ((user.role === 'tourist' && isLevelTen) || user.role === 'administrator')" class="dd">-->

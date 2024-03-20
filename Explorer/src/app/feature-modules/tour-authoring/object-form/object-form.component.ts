@@ -49,6 +49,7 @@ export class ObjectFormComponent implements OnChanges {
   addObject(): void {
     const object: TourObject = {
       name: this.objectForm.value.name || '',
+      tourId:this.tour.id,
       description: this.objectForm.value.description || '',
       category: this.objectForm.value.category || '',
       imageUrl: this.objectForm.value.imageUrl || '',
@@ -63,11 +64,8 @@ export class ObjectFormComponent implements OnChanges {
 
     this.service.addObject(object).subscribe({
       next: (response: any) => {
-        const objInTour: ObjInTour = {
-          idTour: this.tour.id || 0,
-          idObject: response.id || 0,
-        };
-        this.service.addObjInTour(objInTour).subscribe();
+        
+        // this.service.addObjInTour(objInTour).subscribe();
         this.objectUpdated.emit();
         this.closeForm.emit();
       },

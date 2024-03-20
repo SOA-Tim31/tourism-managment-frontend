@@ -30,18 +30,19 @@ export class BlogComponent {
   getBlogPosts(): void {
     this.service.getBlogPosts().subscribe({
       next: (result: PagedResults<BlogPost>) => {
-        this.blogPosts = result.results;
+        this.blogPosts = result.results
+          .filter(post => post.status !== 'DRAFT' && post.status !== 'CLOSED');
+  
         this.blogPosts.forEach(post => {
-
           console.log(post.creationDate);
           post.creationDate = new Date(post.creationDate);
           console.log(post);
         });
       },
-      error: (err: any) =>{
+      error: (err: any) => {
         console.log(err);
       }
-    })
+    });
   }
 
   

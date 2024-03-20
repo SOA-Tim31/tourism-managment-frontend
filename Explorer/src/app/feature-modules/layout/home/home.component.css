@@ -23,9 +23,9 @@
 }
 
 .landingPage {
-    background-color: white;
-    margin-left: 12%;
-    margin-right: 12%;
+    background-color: #FAF9F6;
+    padding-left: 12%;
+    padding-right: 12%;
     font-size: 20px;
     display: flex;
     flex-direction: column;
@@ -61,7 +61,6 @@
     height: auto;
 }
 
-
 .title {
     font-family: 'Trip';
     font-size: 42px;
@@ -69,10 +68,10 @@
     text-align: center;
     margin-bottom: 56px;
 }
+
 .top_margin {
     margin-top: 5%;
 }
-
 
 .b4 {
     font-family: 'Trip';

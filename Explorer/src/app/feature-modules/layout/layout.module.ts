@@ -6,12 +6,14 @@ import { MaterialModule } from 'src/app/infrastructure/material/material.module'
 import { RouterModule } from '@angular/router';
 import { RecommendationsComponent } from './home/recommendations/recommendations.component';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
     HomeComponent,
     NavbarComponent,
-    RecommendationsComponent
+    RecommendationsComponent,
+    FooterComponent
   ],
   imports: [
     CommonModule,

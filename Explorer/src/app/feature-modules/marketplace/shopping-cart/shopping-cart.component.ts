@@ -10,6 +10,8 @@ import { CurrencyService } from 'src/app/currency.service';
 import { TourAuthoringService } from '../../tour-authoring/tour-authoring.service';
 import { Tour } from '../../tour-authoring/tour/model/tour.model';
 import { PagedResults } from 'src/app/shared/model/paged-results.model';
+import { Profile } from '../../administration/model/profile.model';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'xp-shopping-cart',
@@ -18,6 +20,7 @@ import { PagedResults } from 'src/app/shared/model/paged-results.model';
 })
 export class ShoppingCartComponent {
 
+  profile: Profile;
   shoppingCart: ShoppingCart;
   orderItem: OrderItem;
   usedCoupons: number[] = []
@@ -37,6 +40,7 @@ export class ShoppingCartComponent {
     private tokenStorage: TokenStorage,
     private adminService: AdministrationService,
     private currencyService: CurrencyService,
+    private router: Router,
   ) {
     this.shouldShowOriginal = true
     this.previousSelectedCurrency = 'USD'
@@ -61,7 +65,8 @@ export class ShoppingCartComponent {
   ngOnInit(): void {
     this.authService.user$.subscribe(user => {
       if (user) {
-        this.loadShoppingCart(user.id); 
+        this.loadShoppingCart(user.id);
+        this.loadProfile(user.id);
       }
     });
 
@@ -87,13 +92,24 @@ export class ShoppingCartComponent {
       });
   }
 
+  loadProfile(userId: number): void {
+    this.adminService.getProfile(userId).subscribe({
+      next: (profile: Profile) => {
+        this.profile = profile
+      },
+      error: (error) => {
+        console.error('Error fetching profile:', error);
+      }
+    });
+  }
+
   removeOrderItem(cartId: number | undefined, tourId: number | undefined): void {
     // Check if cartId and tourId are defined before proceeding
     if (cartId === undefined || tourId === undefined) {
       console.error('Invalid cartId or tourId');
       return;
     }
-  
+
     this.marketplaceService.removeOrderItem(cartId, tourId)
       .subscribe(updatedShoppingCart => {
         this.shoppingCart = updatedShoppingCart;
@@ -103,30 +119,51 @@ export class ShoppingCartComponent {
   }
 
   purchase(cartId: number ): void {
-       
-    for (const couponId of this.usedCoupons) {
-      
+
+    /*for (const couponId of this.usedCoupons) {
+
       this.marketplaceService.deleteCoupon(couponId).subscribe({
         next: () => {
         },
         error: () => {
         }
-      })      
+      })
+    }*/
+
+    if(this.shoppingCart.total > this.profile.balance){
+      alert("Your dont have enough funds for this purchase!")
+      return
     }
-    
+
     this.marketplaceService.updateShoppingCart(this.shoppingCart)
     .subscribe(updatedShoppingCart => {
+      this.profile.balance -= this.shoppingCart.total
       this.shoppingCart = updatedShoppingCart;
+      this.shoppingCart.orderItems.length = 0;
+      this.adminService.updateProfile(this.profile, this.profile.userId).subscribe({
+        next: (profile: Profile) => {
+          this.profile = profile
+        },
+        error: (error) => {
+          console.error('Error updating profile:', error);
+        }
+      });
     }, error => {
       console.error('Error updating cart', error);
     });
 
+
+
     this.marketplaceService.purchase(cartId)
       .subscribe(updatedShoppingCart => {
         this.shoppingCart = updatedShoppingCart;
+        console.log("Purchased")
       }, error => {
         console.error('Error purchasing items', error);
-      });
+    });
+
+    //alert("You have successfully purchased tours!")
+    this.router.navigate(['purchasedTours']);
   }
 
   checkCoupon(code: string, tourId: number): void {
@@ -139,6 +176,11 @@ export class ShoppingCartComponent {
       next: (coupon: Coupon) => {
         if(!coupon){
           alert("Code is invalid or the coupon is expired!")
+          return
+        }
+
+        if(this.usedCoupons.includes(coupon.id)){
+          //alert("This coupon has already been used!")
           return
         }
 
@@ -167,7 +209,7 @@ export class ShoppingCartComponent {
                     orderItem.price -= (coupon.discount/100)*orderItem.price
                   }
                 }
-        
+
                 this.shoppingCart.total = this.calculateTotal();
                 this.usedCoupons.push(coupon.id)
                 alert("Coupon successfuly used!")
@@ -191,7 +233,7 @@ export class ShoppingCartComponent {
               orderItem.price -= (coupon.discount/100)*orderItem.price
             }
           }
-  
+
           this.shoppingCart.total = this.calculateTotal();
           this.usedCoupons.push(coupon.id)
           alert("Coupon successfuly used!")
@@ -231,5 +273,5 @@ export class ShoppingCartComponent {
     console.log(originalPrice)    // Format the converted price as needed
     return convertedPrice.toFixed(2);
   }
-  
+
 }

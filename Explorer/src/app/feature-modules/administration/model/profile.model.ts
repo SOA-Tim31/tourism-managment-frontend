@@ -7,4 +7,5 @@ export interface Profile {
     profileImage: string;
     bio: string;
     quote: string;
+    balance: number;
 }

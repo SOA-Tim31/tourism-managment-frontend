@@ -2,25 +2,26 @@
   display: flex;
   flex-direction: column;
   gap: 15px;
-  width: 65%;
+  width: 400px;
   padding: 70px 50px 50px 50px;
+  margin: auto;
 }
 
-.wraper{
+.wrapper{
   display: flex;
-  flex-direction: row;
-
+  flex-direction: column;
+  background-color: #FAF9F6;
+  justify-content: center;
 }
 
 .label {
-  font-size: 1.7em;
-  text-transform: uppercase;
-  color: #4e79a7;
-  font-family: Georgia, serif;
-  background-color: rgba(246, 245, 245, 0.8);
+  font-family: 'Trip';
+  font-weight: bold;
+  font-size: 34px;
+  text-align: center;
   border-radius: 10px;
-
   padding: 5px 10px;
+  margin-bottom: 24px;
 }
 
 .button {
@@ -30,11 +31,4 @@
   font-size: 1.2em;
   width: 400px;
   height: 40px;
-}
-
-.wraper {
-  background-image: url("/assets/images/main.jpg");
-  background-size: cover;
-  background-repeat: repeat;
-  min-height: 150vh;
 }

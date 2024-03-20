@@ -20,8 +20,8 @@ export class ProblemChatComponent implements OnChanges{
   otherName: string;
   user: User;
   messageControl = new FormControl('');
-  
-    
+
+
   constructor(private service: MarketplaceService, private authService: AuthService, private adminService: AdministrationService) {}
 
   ngOnChanges() {
@@ -36,7 +36,9 @@ export class ProblemChatComponent implements OnChanges{
     this.service.getMessagesByProblemId(this.problem.id || 0).subscribe({
       next: (result: PagedResults<ProblemMessage>) => {
           this.messages = result.results;
-          
+
+        this.messages = result.results.filter(message => !!message).sort((a, b) => (a.id || 0) - (b.id || 0));
+
           this.messages.forEach(mess => {
             if (mess.idSender != this.user.id) {
               mess.isRead = true;

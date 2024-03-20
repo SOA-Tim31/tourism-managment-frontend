@@ -44,6 +44,10 @@
       <label>Level:</label>
       <label *ngFor="let txp of touristXP">{{txp.level}}</label>
     </div>
+    <div class="form-group" *ngIf="user.role==='tourist'">
+      <label>Balance:</label>
+      <label>{{userProfile.balance}}$</label>
+    </div>
     <button class="edit-button" (click)="toggleEditMode()">{{ isEditMode ? 'Save' : 'Edit' }}</button>
     <div>
       <mat-icon (click)="onMessagesClicked()">mail_outline</mat-icon>

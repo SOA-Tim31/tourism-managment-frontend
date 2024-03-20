@@ -75,6 +75,7 @@ export class CouponFormComponent implements OnInit{
         next: (createdCoupon) => {
           console.log('Coupon created successfully:', createdCoupon);
           alert("Coupon has been succesfully created!")
+          this.router.navigate(['/tour']);
           // Handle success, e.g., redirect to a different page
         },
         error: (error) => {

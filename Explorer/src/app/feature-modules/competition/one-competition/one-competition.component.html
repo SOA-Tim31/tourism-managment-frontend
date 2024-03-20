@@ -2,11 +2,11 @@
 
     <div class="slide-container">
 
-      <div class="title">ALL APPLIES</div>
+      <div class="title">All applies</div>
 
       <div class="slide-content">
         <div class="card-wrapper">
-          <button *ngFor="let apply of competitionApplies">
+          <div *ngFor="let apply of competitionApplies">
             <div class="card" [ngClass]="{ 'card-selected': apply.selected == true }">
 
             <div class="image-content">
@@ -16,24 +16,23 @@
             </div>
 
             <div class="card-content">
-              <h2 class="name">{{ apply.userName }}</h2>
+              <h2 class="name">{{ apply.userName }} {{ apply.userLastName }}</h2>
+
 
               <div class="desc-container">
-                <p class="description">{{ apply.userLastName }}</p>
+<!--                <p>Num of likes:</p>-->
+                <p class="description">Num of likes: {{ apply.numLikes }}</p>
               </div>
-
-              <div class="desc-container">
-                <p>Num of likes:</p>
-                <p class="description">{{ apply.numLikes }}</p>
+              <div class="like-div">
+                <button *ngIf="apply.notHis" class="like-button" (click)="selectApply(apply)">
+                  <img src="assets/images/like.png">
+                </button>
               </div>
-              <button *ngIf="apply.notHis" class="like-button" (click)="selectApply(apply)">
-                <img src="assets/images/like.png">
-              </button>
             </div>
 
 
           </div>
-          </button>
+          </div>
         </div>
 
       </div>

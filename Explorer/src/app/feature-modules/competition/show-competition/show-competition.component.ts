@@ -28,17 +28,17 @@ export class ShowCompetitionComponent implements OnInit{
     private tourService:  TourAuthoringService,
     private router: Router){
   }
-  
+
   competitions: ExtendedCompetition[] = []
   user: User | undefined;
   tour: Tour | undefined;
-  
+
   ngOnInit(): void {
     this.authService.user$.subscribe(user => {
       this.user = user;
     })
     this.get();
-    
+
   }
 
   onCompetitionAdded(): void {
@@ -98,8 +98,17 @@ export class ShowCompetitionComponent implements OnInit{
     }else{
       this.router.navigate(['/winnerApply/', competition.id]);
     }
-    
   }
 
+  formatDate(dateString: Date) {
+    var dateObject = new Date(dateString);
 
+    var day = dateObject.getDate();
+    var month = dateObject.getMonth() + 1;
+    var year = dateObject.getFullYear();
+
+    var formattedDate = day + "-" + month + "-" + year;
+
+    return formattedDate;
+  }
 }

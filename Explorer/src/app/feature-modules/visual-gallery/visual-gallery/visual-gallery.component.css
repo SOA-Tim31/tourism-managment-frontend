@@ -64,16 +64,17 @@
     height: 200px;
     object-fit: cover;
     border-radius: 15px;
-    transition: transform 0.3s ease-in-out;
+    transition: box-shadow 0.3s ease;
+    box-shadow: 0 0 10px rgba(34, 24, 83, 0.7);
   }
   .image-card:hover img {
-    transform: scale(1.05); /* Scale the image on hover for a zoom effect */
+    box-shadow: 0 0 30px rgba(34, 24, 83, 0.7); /* Scale the image on hover for a zoom effect */
   }
 
   .popup {
     background: white;
-    padding: 30px;
-    border-radius: 10px;
+    padding: 10px;
+    border-radius: 15px;
     position: relative;
     display: flex;
     justify-content: center;
@@ -81,10 +82,19 @@
     flex-direction: column; /* Center content vertically */
     font-family: 'Trip', sans-serif;
   }
-  
+  .title {
+    color: black;
+    font-family: 'Trip', sans-serif;
+    font-weight: bold;
+    font-size: 45px;
+    margin-top: 50px;
+    margin-bottom: 40px;
+    text-align: center;
+  }
   .popup img {
     max-width: 100%; /* Ensure the image doesn't exceed the container width */
     max-height: 100%; /* Ensure the image doesn't exceed the container height */
+    border-radius: 15px;
   }
   .popup-container {
     position: fixed;
@@ -146,10 +156,7 @@
 }
 
 .background {
-  
-  
-  
-  background-image: url("/assets/images/backgroundGallery.jpg");
+  background-color: #FAF9F6;
   background-size: cover;
   background-repeat: repeat;
   min-height: 150vh;

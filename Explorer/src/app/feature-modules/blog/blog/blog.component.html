@@ -1,18 +1,29 @@
-<div class="blogs">
-    <h1 class="title">Blogs</h1>
-    <div class="create-post-container">
-        <!-- Add any elements or buttons related to creating a post -->
-        <input mat-raised-button color="primary" placeholder="Create Post" type="text" class="create-post-button" (click)="navigateToPostCreation()" >
-    </div>
-    <div class="blog-container">
-        <div class="filter-section">
-            <button mat-raised-button color="primary" (click)="getBlogPosts()">All</button>
-            <button mat-raised-button color="primary" (click)="getFamousBlogPosts()">Famous</button>
-            <button mat-raised-button color="primary" (click)="getActiveBlogPosts()">Active</button>
-        </div>
-    </div>
-<div class="blog-container" *ngFor="let post of blogPosts">
+
+<body>
+  <div class="top">
+    <h1 class="title">Travel Blog</h1>
+  </div>
+  <div class="content-container">
+    <div class="side-container">
+        <div class="create-post-container">
+            <button class="create-post-button" (click)="navigateToPostCreation()">Create Post</button>
+          </div>
+      <div class="filter-section">
+        <button  (click)="getBlogPosts()">All</button>
+        <button  (click)="getFamousBlogPosts()">Famous</button>
+        <button  (click)="getActiveBlogPosts()">Active</button>
+      </div>
+      <div class="blog-container" *ngFor="let post of blogPosts">
         <xp-blog-post-card class="post-container" [post]="post"></xp-blog-post-card>
+      </div>
     </div>
-</div>
- 
+    <div class="bordered-text">
+        <p class="about-text">About Travel Blogs</p>
+        <div class="centered-sentences">
+          <p>Welcome to our Travel Blog! 🌍✈️ Discover captivating stories, insightful travel tips, and exciting adventures shared by passionate explorers from around the globe.</p>
+          <p>Join our community of fellow travel enthusiasts and share your own tales, tips, and photos.</p>
+          <p>Happy reading and happy travels!</p>
+        </div>
+      </div>
+  </div>
+</body>
