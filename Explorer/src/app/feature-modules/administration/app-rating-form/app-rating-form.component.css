@@ -1,6 +1,21 @@
-div {
-    width: 400px;
+.form-container {
+    width: 500px;
+    margin: 170px auto 20px auto; /* Added margin-top */
+    padding: 20px;
+    background-color: #d0d0d0;
+    border-radius: 10px;
+    font-family: Arial, sans-serif;
+}
+.form-content {
     display: flex;
-    gap: 20px;
     flex-direction: column;
+    gap: 20px;
+}
+
+.form-field {
+    width: 100%;
+}
+
+.submit-button {
+    align-self: flex-end;
 }
