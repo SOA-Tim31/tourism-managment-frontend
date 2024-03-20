@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AppRating } from '../model/app-rating.model';
 import { AdministrationService } from '../administration.service';
 import {GoogleAnalyticsService} from "../../../infrastructure/google-analytics/google-analytics.service";
+import { PagedResults } from 'src/app/shared/model/paged-results.model';
 
 @Component({
   selector: 'xp-app-ratings',
@@ -21,18 +22,14 @@ export class AppRatingsComponent implements OnInit {
   ngOnInit(): void {
     this.googleAnalytics.sendPageView(window.location.pathname);
 
-    this.service.getAppRatings().subscribe(
-      (data) => {
-        this.appRatings = data.results;
-      },
-      (error) => {
-        console.log(error);
-        alert(error.error.message);
-      }
-    )
+    this.getAll();
   }
-
-
-
-
+  getAll(): void {
+    this.service.getAppRatings().subscribe({
+      next: (result: AppRating[]) => {
+        console.log("br: ", result.length)
+        this.appRatings = result
+      }
+  })
+  }
 }

@@ -2,7 +2,7 @@
 import { HttpClient,HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 //import { Equipment } from './model/equipment.model';
-import { environment } from 'src/env/environment';
+import { envStakeholders, environment } from 'src/env/environment';
 import { Observable } from 'rxjs';
 import { PagedResults } from 'src/app/shared/model/paged-results.model';
 import { AppRating } from './model/app-rating.model';
@@ -70,8 +70,8 @@ export class AdministrationService {
   }
 
   // App ratings
-  getAppRatings(): Observable<PagedResults<AppRating>> {
-    return this.http.get<PagedResults<AppRating>>(environment.apiHost + 'administration/app-ratings')
+  getAppRatings(): Observable<AppRating[]> {
+    return this.http.get<AppRating[]>(environment.apiHost + 'administration/app-ratings')
   }
   addAppRating(rating: AppRating): Observable<AppRating> {
     return this.http.post<AppRating>(environment.apiHost + 'administration/app-ratings', rating);
