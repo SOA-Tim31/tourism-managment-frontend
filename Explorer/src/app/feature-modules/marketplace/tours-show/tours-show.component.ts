@@ -47,11 +47,15 @@ export class ToursShowComponent {
   }
   getAllReviews() {
     this.marketplaceService.getAllReviews().subscribe({
-      next: (response) => {
-        this.reviews = response.results;
+      next: (reviews: TourReview[]) => {
+        this.reviews = reviews;
       },
+      error: (error) => {
+        console.log("Error fetching reviews:", error);
+      }
     });
   }
+  
 
   getAllTours() {
     this.marketplaceService.getAllTours().subscribe({

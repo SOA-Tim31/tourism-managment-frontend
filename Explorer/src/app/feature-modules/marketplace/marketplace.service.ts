@@ -118,8 +118,8 @@ export class MarketplaceService {
     );
   }
 
-  getAllReviews(): Observable<PagedResults<TourReview>> {
-    return this.http.get<PagedResults<TourReview>>(
+  getAllReviews(): Observable<TourReview[]> {
+    return this.http.get<TourReview[]>(
       environment.apiHost + 'tourist/tourReview'
     );
   }

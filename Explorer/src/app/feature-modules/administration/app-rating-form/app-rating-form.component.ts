@@ -58,12 +58,7 @@ export class AppRatingFormComponent implements OnInit {
         alert('App rating added successfully');
       },
       (error) => {
-        console.log(error);
-        if (error.status === 400 && error.error === 'User has already rated the app.') {
           alert('User has already rated the app.');
-        } else {
-          alert(error.error.message);
-        }
       }
     )
   }

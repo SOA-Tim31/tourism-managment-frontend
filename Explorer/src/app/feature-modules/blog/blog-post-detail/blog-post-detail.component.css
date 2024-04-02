@@ -344,3 +344,8 @@ textarea {
   font-size: 14px;
   margin-top: 5px; /* Adjust as needed */
 }
+
+.card-image{
+  width: 400px;
+  height: 300px;
+}

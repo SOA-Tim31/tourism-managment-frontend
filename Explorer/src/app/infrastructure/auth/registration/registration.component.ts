@@ -42,7 +42,7 @@ export class RegistrationComponent {
           this.router.navigate(['/login']);
         },
         error: () => {
-          this.openSnackBar('An error occurred during registration.');
+          this.openSnackBar('Invalid value of username or mail');
         }
       });
     }

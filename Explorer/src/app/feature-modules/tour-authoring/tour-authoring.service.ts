@@ -35,8 +35,8 @@ export class TourAuthoringService {
 
   constructor(private http: HttpClient) {}
 
-  getObjects(): Observable<PagedResults<TourObject>> {
-    const list = this.http.get<PagedResults<TourObject>>(
+  getObjects(): Observable<TourObject[]> {
+    const list = this.http.get<TourObject[]>(
       environment.apiHost + 'administration/object'
     );
     console.log('Lisf objects:', list);
