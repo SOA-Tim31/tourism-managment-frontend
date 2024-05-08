@@ -1,0 +1,16 @@
+<div class="wrapper">
+  <div class="inner-wrapper">
+    <p class="title">Add users in your followers list</p>
+    <div class="card" *ngFor="let user of users">
+      <p>{{ user.username }}</p>
+      <button
+        class="button1"
+        type="submit"
+        color="primary"
+        (click)="follow(user)"
+      >
+        Follow
+      </button>
+    </div>
+  </div>
+</div>
