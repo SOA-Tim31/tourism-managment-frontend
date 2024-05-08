@@ -27,8 +27,8 @@
     "@types/leaflet-routing-machine": "^3.2.6",
     "angular2-notifications": "^16.0.1",
     "apexcharts": "^3.45.1",
-    "chart.js": "^4.4.1",
     "axios": "^1.6.2",
+    "chart.js": "^4.4.1",
     "katex": "^0.16.9",
     "leaflet": "^1.9.4",
     "leaflet-routing-machine": "^3.2.12",
@@ -38,6 +38,7 @@
     "ngx-markdown-editor": "^5.3.4",
     "prismjs": "^1.29.0",
     "rxjs": "~7.8.0",
+    "sweetalert2": "^11.10.8",
     "tslib": "^2.3.0",
     "zone.js": "~0.13.0"
   },
