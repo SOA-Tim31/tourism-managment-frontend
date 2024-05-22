@@ -18,6 +18,7 @@ import { UserStatisticsComponent } from './user-statistics/user-statistics.compo
 import { FollowerMessagesComponent } from './follower-messages/follower-messages.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { FollowUserComponent } from './follow-user/follow-user.component';
+import { ReccomendationsUser } from './reccomendations/reccomendations.component';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { FollowUserComponent } from './follow-user/follow-user.component';
     UserPositionComponent,
     UserStatisticsComponent,
     FollowerMessagesComponent,
-    FollowUserComponent
+    FollowUserComponent,
+    ReccomendationsUser
   ],
   imports: [
     CommonModule,

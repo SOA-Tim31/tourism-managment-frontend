@@ -4,7 +4,7 @@ import { HomeComponent } from 'src/app/feature-modules/layout/home/home.componen
 import { LoginComponent } from '../auth/login/login.component';
 import { AuthGuard } from '../auth/auth.guard';
 import { RegistrationComponent } from '../auth/registration/registration.component';
-
+import { ReccomendationsUser } from 'src/app/feature-modules/administration/reccomendations/reccomendations.component';
 import { TourReviewFormComponent } from 'src/app/feature-modules/marketplace/tour-review-form/tour-review-form.component';
 import { TourReviewsShowComponent } from 'src/app/feature-modules/marketplace/tour-reviews-show/tour-reviews-show.component';
 
@@ -125,6 +125,7 @@ const routes: Routes = [
   { path: 'shoppingcart', component: ShoppingCartComponent },
   { path: 'tourMapFirstPoint/:id', component: FirstPointMap },
   { path: 'tourReviewForm/:id', component: TourReviewFormComponent },
+  {path:'reccomendations',component:ReccomendationsUser},
   { path: 'my-ended-tours', component: MyEndedToursComponent },
   { path: 'my-tours', component: MyToursComponent },
   { path: 'tourReviewShow', component: TourReviewsShowComponent },

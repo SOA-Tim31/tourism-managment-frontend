@@ -29,6 +29,11 @@ export class AdministrationService {
     return this.http.post<GraphUser[]>(environment.apiHost + 'follower', users);
   }
 
+  getReccomendations(id:number): Observable<GraphUser[]> {
+    return this.http.get<GraphUser[]>(environment.apiHost + 'follower/recommendations/'+ id);
+  }
+
+
   getEquipment(): Observable<PagedResults<Equipment>> {
     return this.http.get<PagedResults<Equipment>>(
       environment.apiHost + 'administration/equipment'
